@@ -1,0 +1,327 @@
+{
+  "name": "OSINT Framework",
+  "type": "folder",
+  "children": [
+  {
+    "name": "Username",
+    "type": "folder",
+    "children": [
+    {
+      "name": "Username Search Engines",
+      "type": "folder",
+      "children": [
+      {
+        "name": "WhatsMyName",
+        "type": "url",
+        "url": "https://whatsmyname.app/"
+      },
+      {
+        "name": "Namechk",
+        "type": "url",
+        "url": "https://namechk.com/"
+      },
+      {
+        "name": "KnowEm",
+        "type": "url",
+        "url": "http://knowem.com/"
+      },
+      {
+        "name": "NameCheckr",
+        "type": "url",
+        "url": "https://www.namecheckr.com/"
+      },
+      {
+        "name": "UserSearch.org",
+        "type": "url",
+        "url": "https://usersearch.org/"
+      },
+      {
+        "name": "WhatsMyName (T)",
+        "type": "url",
+        "url": "https://github.com/WebBreacher/WhatsMyName"
+      },
+      {
+        "name": "WhatsMyName",
+        "type": "url",
+        "url": "https://whatsmyname.app/"
+      },
+      {
+        "name": "Thats Them",
+        "type": "url",
+        "url": "https://thatsthem.com/"
+      },
+      {
+        "name": "Check Usernames",
+        "type": "url",
+        "url": "http://checkusernames.com/"
+      },
+      {
+        "name": "NameCheckup",
+        "type": "url",
+        "url": "https://namecheckup.com/"
+      },
+      {
+        "name": "Instant Username Search",
+        "type": "url",
+        "url": "https://instantusername.com/"
+      },
+      {
+        "name": "Names Directory",
+        "type": "url",
+        "url": "https://namesdir.com/"
+      }]
+    },
+    {
+      "name": "Specific Sites",
+      "type": "folder",
+      "children": [
+      {
+        "name": "Amazon Usernames (M)",
+        "type": "url",
+        "url": "https://www.google.com/search?q=site:amazon.com+%3Cusername%3E"
+      },
+      {
+        "name": "Github User (M)",
+        "type": "url",
+        "url": "https://api.github.com/users/%3Cusername%3E/events/public"
+      },
+      {
+        "name": "Tinder Usernames (M)",
+        "type": "url",
+        "url": "https://www.gotinder.com/@%3Cusername%3E"
+      },
+      {
+        "name": "Keybase",
+        "type": "url",
+        "url": "https://keybase.io/"
+      },
+      {
+        "name": "MIT PGP Key Server",
+        "type": "url",
+        "url": "http://pgp.mit.edu/"
+      }]
+    }]
+  },
+  {
+    "name": "Email Address",
+    "type": "folder",
+    "children": [
+    {
+      "name": "Email Search",
+      "type": "folder",
+      "children": [
+      {
+        "name": "ThatsThem",
+        "type": "url",
+        "url": "https://thatsthem.com/reverse-email-lookup"
+      },
+      {
+        "name": "Hunter",
+        "type": "url",
+        "url": "https://hunter.io/"
+      },
+      {
+        "name": "Email to Address (R)",
+        "type": "url",
+        "url": "http://www.melissadata.com/lookups/emails.asp"
+      },
+      {
+        "name": "VoilaNorbert",
+        "type": "url",
+        "url": "https://www.voilanorbert.com/"
+      },
+      {
+        "name": "GHunt (T)",
+        "type": "url",
+        "url": "https://github.com/mxrch/GHunt"
+      },
+      {
+        "name": "OSINT Industries",
+        "type": "url",
+        "url": "https://osint.industries/"
+      },
+      {
+        "name": "theHarvester (T)",
+        "type": "url",
+        "url": "https://github.com/laramies/theHarvester"
+      },
+      {
+        "name": "Infoga (T)",
+        "type": "url",
+        "url": "https://github.com/m4ll0k/infoga"
+      },
+      {
+        "name": "Skymem",
+        "type": "url",
+        "url": "http://www.skymem.info/"
+      },
+      {
+        "name": "MailsHunt",
+        "type": "url",
+        "url": "https://mailshunt.com/"
+      }]
+    },
+    {
+      "name": "Common Email Formats",
+      "type": "folder",
+      "children": [
+      {
+        "name": "Email Format",
+        "type": "url",
+        "url": "https://www.email-format.com/"
+      },
+      {
+        "name": "Toofr",
+        "type": "url",
+        "url": "https://www.toofr.com/"
+      },
+      {
+        "name": "Email Permutator",
+        "type": "url",
+        "url": "http://metricsparrow.com/toolkit/email-permutator/"
+      },
+      {
+        "name": "OneLook Reverse Dictionary and Thesaurus",
+        "type": "url",
+        "url": "http://www.onelook.com/reverse-dictionary.shtml"
+      }]
+    },
+    {
+      "name": "Email Verification",
+      "type": "folder",
+      "children": [
+      {
+        "name": "Reacher Github (T)",
+        "type": "url",
+        "url": "https://github.com/reacherhq/check-if-email-exists"
+      },
+      {
+        "name": "Reacher Demo",
+        "type": "url",
+        "url": "https://reacher.email"
+      },
+      {
+        "name": "MailScrap",
+        "type": "url",
+        "url": "https://mailscrap.com/"
+      },
+      {
+        "name": "Read Notify",
+        "type": "url",
+        "url": "http://www.readnotify.com/"
+      },
+      {
+        "name": "Email Reputation",
+        "type": "url",
+        "url": "https://emailrep.io/"
+      },
+      {
+        "name": "MailboxValidator",
+        "type": "url",
+        "url": "https://www.mailboxvalidator.com/demo"
+      }]
+    },
+    {
+      "name": "Breach Data",
+      "type": "folder",
+      "children": [
+      {
+        "name": "Have I been pwned?",
+        "type": "url",
+        "url": "https://haveibeenpwned.com/"
+      },
+      {
+        "name": "Hudson Rock",
+        "type": "url",
+        "url": "https://www.hudsonrock.com/threat-intelligence-cybercrime-tools"
+      },
+      {
+        "name": "DeHashed (R)",
+        "type": "url",
+        "url": "https://dehashed.com/"
+      },
+      {
+        "name": "Vigilante.pw",
+        "type": "url",
+        "url": "https://www.vigilante.pw/"
+      },
+      {
+        "name": "Ashley Madison Emails",
+        "type": "url",
+        "url": "https://ashley.cynic.al/"
+      }]
+    },
+    {
+      "name": "Mail Blacklists",
+      "type": "folder",
+      "children": [
+      {
+        "name": "MxToolbox",
+        "type": "url",
+        "url": "http://mxtoolbox.com/"
+      }]
+    }]
+  },
+  
+  {
+    "name": "Training",
+    "type": "folder",
+    "children": [
+    {
+      "name": "Games",
+      "type": "folder",
+      "children": [
+      {
+        "name": "A Google A Day",
+        "type": "url",
+        "url": "http://www.agoogleaday.com/"
+      },
+      {
+        "name": "GeoGuesser",
+        "type": "url",
+        "url": "https://geoguessr.com/"
+      },
+      {
+        "name": "Verif!cation Quiz Bot",
+        "type": "url",
+        "url": "https://twitter.com/quiztime"
+      }]
+    },
+    {
+      "name": "Forensic OSINT KB Guides",
+      "type": "url",
+      "url": "https://www.forensicosint.com/osint-guide"
+    },
+    {
+      "name": "AutomatingOSINT.com",
+      "type": "url",
+      "url": "http://register.automatingosint.com/"
+    },
+    {
+      "name": "Open Source Intelligence Techniques",
+      "type": "url",
+      "url": "https://inteltechniques.com/"
+    },
+    {
+      "name": "Plessas",
+      "type": "url",
+      "url": "https://plessas.net/online-training"
+    },
+    {
+      "name": "SANS SEC487 OSINT Class",
+      "type": "url",
+      "url": "https://www.sans.org/sec487"
+    },
+    {
+      "name": "NetBootCamp",
+      "type": "url",
+      "url": "https://netbootcamp.org/trainingprogram/"
+    },
+    {
+      "name": "Smart Questions",
+      "type": "url",
+      "url": "http://www.catb.org/esr/faqs/smart-questions.html"
+    }]
+  }]
+}
+
