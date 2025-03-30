@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Security Audit Dashboard</title>
+    <link rel="stylesheet" href="arf.css">
+    <script src="d3.v3.min.js"></script>
+    <script defer src="arf.js"></script>
+</head>
+<body>
+    <div class="container">
+        <h1>Security Audit Dashboard</h1>
+        
+        <label for="target-select">Select Target Machine:</label>
+        <select id="target-select">
+            <option value="">Loading targets...</option>
+        </select>
+        
+        <button id="scan-btn">Run Security Scan</button>
+        
+        <h2>Scan Report</h2>
+        <pre id="scan-result">Awaiting scan results...</pre>
+    </div>
+</body>
+</html>
