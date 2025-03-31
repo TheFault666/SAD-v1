@@ -21,6 +21,30 @@
         
         <h2>Scan Report</h2>
         <pre id="scan-result">Awaiting scan results...</pre>
+        <!-- Dynamic Link from JSON -->
+        <div id="json-link"></div>
     </div>
+
+    <script>
+        // Fetch JSON and create a clickable link
+        fetch('frontend/js/af.json')
+            .then(response => response.json())
+            .then(data => {
+                if (data.type === "url" && data.url) {
+                    const link = document.createElement("a");
+                    link.href = data.url;
+                    link.target = "_blank"; // Opens in a new tab
+                    link.innerText = "Go to Page";
+                    link.style.display = "block"; // Make it visible
+                    link.style.marginTop = "20px"; // Add spacing
+
+                    document.getElementById("json-link").appendChild(link);
+                } else {
+                    document.getElementById("json-link").innerText = "Invalid URL in JSON";
+                }
+            })
+            .catch(error => console.error("Error loading JSON:", error));
+    </script>
+
 </body>
 </html>
