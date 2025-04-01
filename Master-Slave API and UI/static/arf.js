@@ -4,7 +4,8 @@ const API_BASE_URL = "http://127.0.0.1:8000";  // FastAPI backend URL
 async function fetchTargets() {
     try {
         let response = await fetch(`${API_BASE_URL}/get_targets`);
-        let targets = await response.json();
+        let data = await response.json();  // Extract the JSON response
+        let targets = data.available_nodes;  // Get the actual list
 
         let dropdown = document.getElementById("target-select");
         dropdown.innerHTML = "";
@@ -19,6 +20,7 @@ async function fetchTargets() {
         console.error("Error fetching targets:", error);
     }
 }
+
 
 // Run security scan on the selected machine
 async function runScan() {
@@ -40,6 +42,21 @@ async function runScan() {
 
         let data = await response.json();
         document.getElementById("scan-result").innerText = JSON.stringify(data, null, 2);
+
+        // Remove any existing "View Report" button
+        let existingBtn = document.getElementById("view-report-btn");
+        if (existingBtn) {
+            existingBtn.remove();
+        }
+
+        // Add a button to open the report
+        let reportBtn = document.createElement("button");
+        reportBtn.id = "view-report-btn";
+        reportBtn.innerText = "View Report";
+        reportBtn.style.marginTop = "10px";
+        reportBtn.onclick = () => window.open(`${endpoint}/report`, "_blank");
+
+        document.getElementById("scan-result").appendChild(reportBtn);
     } catch (error) {
         console.error("Error running scan:", error);
         document.getElementById("scan-result").innerText = "Scan failed. See console for details.";
