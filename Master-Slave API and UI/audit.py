@@ -1,104 +1,145 @@
-import subprocess
-import winreg
-import os
-import platform
 import json
+import socket
+import platform
+import subprocess
+import os
+import winreg
+import wmi
+import requests
 
-def run_powershell(command):
-    """Executes a PowerShell command and returns its output."""
-    result = subprocess.run(["powershell", "-Command", command], capture_output=True, text=True)
-    return result.stdout.strip() if result.returncode == 0 else None
-# Function to check Windows OS version
-def check_os_version():
-    return {"system": platform.system(), "release": platform.release(), "version": platform.version()}
-
-# Function to check if OS auto-update is enabled
-def check_auto_update():
-    try:
-        key = winreg.OpenKey(winreg.HKEY_LOCAL_MACHINE, r"SOFTWARE\\Policies\\Microsoft\\Windows\\WindowsUpdate\\AU")
-        value, _ = winreg.QueryValueEx(key, "NoAutoUpdate")
-        return "Disabled" if value == 1 else "Enabled"
-    except FileNotFoundError:
-        return "Not Found (Assumed Enabled)"
-
-# Function to check antivirus installation and status
-def check_antivirus():
-    cmd = "powershell Get-CimInstance -Namespace root\\SecurityCenter2 -ClassName AntivirusProduct"
-    result = subprocess.run(cmd, capture_output=True, shell=True, text=True)
+def get_pc_specs():
+    specs = {}
+    c = wmi.WMI()
     
-    # Convert multi-line output into a single string
-    antivirus_output = result.stdout.strip()
-    return antivirus_output.replace("\n", " | ") if antivirus_output else "No antivirus detected."
+    # Get system details
+    specs["Computer Name"] = socket.gethostname()
+    specs["OS"] = platform.system()
+    specs["OS Version"] = platform.version()
+    specs["OS Release"] = platform.release()
+    specs["OS Architecture"] = platform.architecture()[0]
+    specs["OS Licensed"] = check_os_license()
+    specs["Processor"] = get_processor_info()
+    specs["RAM"] = get_memory_info()
+    specs["GPU"] = get_gpu_info()
+    
+    # Get IP & MAC addresses
+    specs["Network"] = get_network_details()
+    
+    return specs
 
+def get_processor_info():
+    try:
+        c = wmi.WMI()
+        for cpu in c.Win32_Processor():
+            return f"{cpu.Name} ({cpu.NumberOfCores} Cores, {cpu.NumberOfLogicalProcessors} Threads)"
+    except:
+        return "Unknown"
 
+def get_memory_info():
+    try:
+        c = wmi.WMI()
+        for mem in c.Win32_ComputerSystem():
+            return f"{round(int(mem.TotalPhysicalMemory) / (1024**3), 2)} GB RAM"
+    except:
+        return "Unknown"
 
-# Function to check if BitLocker is enabled
-def check_bitlocker():
-    cmd = "powershell Get-BitLockerVolume | Select-Object -Property VolumeStatus"
-    result = subprocess.run(cmd, capture_output=True, shell=True, text=True)
-    return "Enabled" if "FullyEncrypted" in result.stdout else "Not Enabled"
+def get_gpu_info():
+    try:
+        c = wmi.WMI()
+        gpus = [gpu.Name for gpu in c.Win32_VideoController()]
+        return gpus if gpus else "No GPU detected"
+    except:
+        return "Unknown"
 
-# Function to check for pirated software
-# def check_pirated_software():
-#     pirated_keywords = ["crack", "keygen", "patch", "pirate"]
-#     suspect_files = []
-#     for root, _, files in os.walk("C:\\"):
-#         for file in files:
-#             if any(keyword in file.lower() for keyword in pirated_keywords):
-#                 suspect_files.append(os.path.join(root, file))
-#     return suspect_files if suspect_files else "No pirated software detected."
+def get_network_details():
+    network_info = {}
+    for interface in wmi.WMI().Win32_NetworkAdapterConfiguration(IPEnabled=True):
+        network_info[interface.Description] = {
+            "MAC Address": interface.MACAddress,
+            "IP Address": interface.IPAddress[0] if interface.IPAddress else "Unknown"
+        }
+    return network_info
 
-# Function to check if USB storage devices are authorized
-def check_usb_storage():
-    cmd = "powershell Get-Service -Name USBSTOR"
-    result = subprocess.run(cmd, capture_output=True, shell=True, text=True)
-    return "Enabled" if "Running" in result.stdout else "Disabled"
+def check_os_license():
+    try:
+        output = subprocess.check_output("cscript //NoLogo C:\\Windows\\System32\\slmgr.vbs /dli", shell=True, text=True)
+        return "Licensed" if "License Status: Licensed" in output else "Pirated"
+    except:
+        return "Unknown"
 
-# Function to check firewall status
-def check_firewall():
-    cmd = "powershell Get-NetFirewallProfile -Profile Domain,Public,Private | Select-Object -Property Enabled"
-    result = subprocess.run(cmd, capture_output=True, shell=True, text=True)
-    return "Active" if "True" in result.stdout else "Inactive"
+def get_user_info():
+    user_info = {}
+    user_info["Current User"] = os.getlogin()
+    try:
+        output = subprocess.check_output("whoami /groups", shell=True, text=True)
+        user_info["Admin Access"] = "Yes" if "Administrators" in output else "No"
+    except:
+        user_info["Admin Access"] = "Unknown"
+    return user_info
 
-# Function to check for BIOS password (Requires Manual Check)
-def check_bios_password():
-    return "Manual check required: Verify BIOS password in BIOS setup."
+def check_antivirus():
+    av_info = {"Antivirus Installed": "No"}
+    
+    try:
+        c = wmi.WMI(namespace="root\\SecurityCenter2")
+        av_products = c.ExecQuery("SELECT * FROM AntivirusProduct")
 
-# Function to check if Secure Boot is enabled
-def check_secure_boot():
-    cmd = "powershell Confirm-SecureBootUEFI"
-    result = subprocess.run(cmd, capture_output=True, shell=True, text=True)
-    return "Enabled" if "True" in result.stdout else "Not Enabled"
+        if av_products:
+            av_list = []
+            for av in av_products:
+                av_name = av.displayName
+                av_list.append({
+                    "Name": av_name,
+                    "Update Available": check_av_update(av_name)
+                })
+            av_info["Antivirus Installed"] = "Yes"
+            av_info["Antiviruses"] = av_list
+    except Exception as e:
+        av_info["Error"] = str(e)
+    
+    return av_info
 
-# Generate JSON Report
-# def generate_report():
-#     report = {
-#         "OS_Version": check_os_version(),
-#         "Auto_Update": check_auto_update(),
-#         "Antivirus_Status": check_antivirus(),
-#         "BitLocker_Status": check_bitlocker(),
-#         # "Pirated_Software_Check": check_pirated_software(),
-#         "USB_Storage_Access": check_usb_storage(),
-#         "Firewall_Status": check_firewall(),
-#         "BIOS_Password_Status": check_bios_password(),
-#         "Secure_Boot_Status": check_secure_boot(),
-#     }
+def check_av_update(av_name):
+    try:
+        response = requests.get(f"https://api.antivirus-updates.com/check?name={av_name}")
+        return "Yes" if response.json().get("update_available", False) else "No"
+    except:
+        return "Unknown"
+
+def is_bitlocker_enabled():
+    try:
+        output = subprocess.check_output("manage-bde -status C:", shell=True, text=True)
+        return "Enabled" if "Protection On" in output else "Disabled"
+    except:
+        return "Unknown"
+
+def is_usb_disabled():
+    try:
+        key = winreg.OpenKey(winreg.HKEY_LOCAL_MACHINE, r"SYSTEM\\CurrentControlSet\\Services\\USBSTOR", 0, winreg.KEY_READ)
+        value, _ = winreg.QueryValueEx(key, "Start")
+        return "Disabled" if value == 4 else "Enabled"
+    except:
+        return "Unknown"
+
+def is_rdp_disabled():
+    try:
+        key = winreg.OpenKey(winreg.HKEY_LOCAL_MACHINE, r"SYSTEM\\CurrentControlSet\\Control\\Terminal Server", 0, winreg.KEY_READ)
+        value, _ = winreg.QueryValueEx(key, "fDenyTSConnections")
+        return "Disabled" if value == 1 else "Enabled"
+    except:
+        return "Unknown"
+
+def security_audit():
+    audit_result = {
+        "PC Specs": get_pc_specs(),
+        "User Account": get_user_info(),
+        "Antivirus": check_antivirus(),
+        "BitLocker": is_bitlocker_enabled(),
+        "USB Access": is_usb_disabled(),
+        "RDP Status": is_rdp_disabled()
+    }
+    
+    print(json.dumps(audit_result, indent=4))
 
 if __name__ == "__main__":
-     report = {
-        "OS_Version": {
-            "system": platform.system(),
-            "release": platform.release(),
-            "version": platform.version()
-        },
-        "Auto_Update": check_auto_update(),
-        "Antivirus_Status": check_antivirus(),
-        "BitLocker_Status": check_bitlocker(),
-        "USB_Storage_Access": check_usb_storage(),
-        "Firewall_Status": check_firewall(),
-        "BIOS_Password_Status": check_bios_password(),
-        "Secure_Boot_Status": check_secure_boot()
-    }
-
-    # Print JSON properly
-     print(json.dumps(report)) # For Valid Parsing of the report to JSON
+    security_audit()
