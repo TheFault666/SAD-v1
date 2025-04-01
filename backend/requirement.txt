@@ -4,7 +4,6 @@ comm==0.2.2
 debugpy==1.8.13
 decorator==5.2.1
 docxcompose==1.4.0
-docxtpl==0.19.1
 et_xmlfile==2.0.0
 executing==2.2.0
 ipykernel==6.29.5
