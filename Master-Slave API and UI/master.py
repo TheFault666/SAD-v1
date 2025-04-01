@@ -100,3 +100,8 @@ async def fetch_report(target: str):
 
         except httpx.HTTPError as e:
             raise HTTPException(status_code=500, detail=f"Failed to fetch report: {str(e)}")
+
+
+if __name__ == "__main__":
+    import uvicorn
+    uvicorn.run(app, host="127.0.0.1", port=8000)  # Master runs on port 8000
