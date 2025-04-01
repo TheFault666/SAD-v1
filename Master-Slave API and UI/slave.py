@@ -10,11 +10,11 @@ report_data = None
 
 @app.post("/scan")
 async def scan():
-    """Runs the audit script (temp.py) and stores the JSON output."""
+    """Runs the audit script (audit.py) and stores the JSON output."""
     global report_data
     try:
         # Run security audit script
-        result = subprocess.run(["python", "temp.py"], capture_output=True, text=True)
+        result = subprocess.run(["python", "audit.py"], capture_output=True, text=True)
         
         # Check if script executed successfully
         if result.returncode != 0:
