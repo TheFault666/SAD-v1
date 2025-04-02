@@ -39,6 +39,10 @@ HOSTNAME=$(hostname)
 KERNEL_VERSION=$(uname -r)
 DISK_USAGE=$(df -h / | awk 'NR==2 {print $3 "/" $2 " used"}')
 
+#List all running services
+Running_Services=$(service --status-all 2>/dev/null | grep + | awk '{print $4}' | jq -R .)
+Running_Services_JSON=$(echo "$Running_Services" | jq -s .)
+
 # Get Network Details (Sanitizing output)
 Network_Details=$(ip -o -4 addr show | awk '{print $2 ": " $4}' | jq -Rs .)
 
@@ -103,6 +107,9 @@ json_output=$(cat <<EOF
         "RAM Used (MB)": "$RAM_USED",
         "RAM Free (MB)": "$RAM_FREE",
         "Disk Usage": "$DISK_USAGE"
+    },
+    "Running Services": {
+        "Details": $Running_Services_JSON
     },
     "Network": {
         "Details": $Network_Details
