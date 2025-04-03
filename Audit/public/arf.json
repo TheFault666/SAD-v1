@@ -1,0 +1,323 @@
+{
+  "name": "Fiber Ground Floor",
+  "type": "folder",
+  "children": [
+  {
+    "name": "Switch",
+    "type": "folder",
+    "children": [
+    {
+      "name": "Room 716 & 717",
+      "type": "folder",
+      "children": [
+      {
+        "name": "Port 1",
+        "type": "url",
+        "url": "http://127.0.0.1:5501/static/index.html"
+      },
+      {
+        "name": "Port 2",
+        "type": "url",
+        "url": "Master-Slave API and UI/static/index.html"
+      },
+      {
+        "name": "Port 3",
+        "type": "url",
+        "url": "Master-Slave API and UI/static/index.html"
+      },
+      {
+        "name": "Port 4",
+        "type": "url",
+        "url": "Master-Slave API and UI/static/index.html"
+      },
+      {
+        "name": "Port 5",
+        "type": "url",
+        "url": "Master-Slave API and UI/static/index.html"
+      },
+      {
+        "name": "Port 6",
+        "type": "url",
+        "url": "Master-Slave API and UI/static/index.html"
+      },
+      {
+        "name": "Port 7",
+        "type": "url",
+        "url": "Master-Slave API and UI/static/index.html"
+      },
+      {
+        "name": "Port 8",
+        "type": "url",
+        "url": "Master-Slave API and UI/static/index.html"
+      },
+      {
+        "name": "Port 9",
+        "type": "url",
+        "url": "Master-Slave API and UI/static/index.html"
+      }]
+    },
+    {
+      "name": "Room 718",
+      "type": "folder",
+      "children": [
+      {
+        "name": "Port 10",
+        "type": "url",
+        "url": "Master-Slave API and UI/static/index.html"
+      }]
+    },
+    {
+      "name": "Room 719",
+      "type": "folder",
+      "children": [
+      {
+        "name": "Port 11",
+        "type": "url",
+        "url": "Master-Slave API and UI/static/index.html"
+      },
+      {
+        "name": "Port 12",
+        "type": "url",
+        "url": "Master-Slave API and UI/static/index.html"
+      }]
+    },
+    {
+      "name": "Room 720",
+      "type": "folder",
+      "children": [
+      {
+        "name": "Port 13",
+        "type": "url",
+        "url": "Master-Slave API and UI/static/index.html"
+      }]
+    },
+    {
+      "name": "Room 721",
+      "type": "folder",
+      "children": [
+      {
+        "name": "Port 14",
+        "type": "url",
+        "url": "Master-Slave API and UI/static/index.html"
+      },
+      {
+        "name": "Port 15",
+        "type": "url",
+        "url": "Master-Slave API and UI/static/index.html"
+      }]
+    },
+    {
+      "name": "Room 722",
+      "type": "folder",
+      "children": [
+      {
+        "name": "Port 16",
+        "type": "url",
+        "url": "Master-Slave API and UI/static/index.html"
+      },
+      {
+        "name": "Port 17",
+        "type": "url",
+        "url": "Master-Slave API and UI/static/index.html"
+      }]
+    },
+    {
+      "name": "Room 725",
+      "type": "folder",
+      "children": [
+      {
+        "name": "Port 18",
+        "type": "url",
+        "url": "Master-Slave API and UI/static/index.html"
+      },
+      {
+        "name": "Port 23",
+        "type": "url",
+        "url": "Master-Slave API and UI/static/index.html"
+      }]
+    },
+    {
+      "name": "Room 726",
+      "type": "folder",
+      "children": [
+      {
+        "name": "Port 19",
+        "type": "url",
+        "url": "Master-Slave API and UI/static/index.html"
+      },
+      {
+        "name": "Port 20",
+        "type": "url",
+        "url": "Master-Slave API and UI/static/index.html"
+      }]
+    },
+    {
+      "name": "Room 708",
+      "type": "folder",
+      "children": [
+      {
+        "name": "Port 22",
+        "type": "url",
+        "url": "Master-Slave API and UI/static/index.html"
+      }]
+    },
+    {
+      "name": "Room 711",
+      "type": "folder",
+      "children": [
+      {
+        "name": "Port 21",
+        "type": "url",
+        "url": "Master-Slave API and UI/static/index.html"
+      }]
+    },
+    {
+      "name": "Hub",
+      "type": "folder",
+      "children": [
+      {
+        "name": "Room 707",
+        "type": "folder",
+        "children": [
+        {
+          "name": "Port Switch 24",
+          "type": "url",
+          "url": "Master-Slave API and UI/static/index.html"
+        }]
+      },
+      {
+        "name": "Room 709",
+        "type": "folder",
+        "children": [
+        {
+          "name": "Port Switch 24",
+          "type": "url",
+          "url": "Master-Slave API and UI/static/index.html"
+        }]
+      },
+      {
+        "name": "Room 712",
+        "type": "folder",
+        "children": [
+        {
+          "name": "Port Switch 24",
+          "type": "url",
+          "url": "Master-Slave API and UI/static/index.html"
+        }]
+      }]
+    }]
+  },
+  
+  
+  {
+    "name": "Switch",
+    "type": "folder",
+    "children": [
+    {
+      "name": "Room 745",
+      "type": "folder",
+      "children": [
+      {
+        "name": "Port 9",
+        "type": "url",
+        "url": "Master-Slave API and UI/static/index.html"
+      },
+      {
+        "name": "Port 10",
+        "type": "url",
+        "url": "Master-Slave API and UI/static/index.html"
+      },
+      {
+        "name": "Port 11",
+        "type": "url",
+        "url": "Master-Slave API and UI/static/index.html"
+      },
+      {
+        "name": "Port 12",
+        "type": "url",
+        "url": "Master-Slave API and UI/static/index.html"
+      },
+      {
+        "name": "Port 13",
+        "type": "url",
+        "url": "Master-Slave API and UI/static/index.html"
+      },
+      {
+        "name": "Port 14",
+        "type": "url",
+        "url": "Master-Slave API and UI/static/index.html"
+      }]
+    },
+    {
+      "name": "Room 746",
+      "type": "folder",
+      "children": [
+      {
+        "name": "Port 3",
+        "type": "url",
+        "url": "Master-Slave API and UI/static/index.html"
+      },
+      {
+        "name": "Port 4",
+        "type": "url",
+        "url": "Master-Slave API and UI/static/index.html"
+      },
+      {
+        "name": "Port 5",
+        "type": "url",
+        "url": "Master-Slave API and UI/static/index.html"
+      },
+      {
+        "name": "Port 6",
+        "type": "url",
+        "url": "Master-Slave API and UI/static/index.html"
+      },
+      {
+        "name": "Port 7",
+        "type": "url",
+        "url": "Master-Slave API and UI/static/index.html"
+      },
+      {
+        "name": "Port 8",
+        "type": "url",
+        "url": "Master-Slave API and UI/static/index.html"
+      },
+      {
+        "name": "Port 15",
+        "type": "url",
+        "url": "Master-Slave API and UI/static/index.html"
+      },
+      {
+        "name": "Port 16",
+        "type": "url",
+        "url": "Master-Slave API and UI/static/index.html"
+      }]
+    },
+    {
+      "name": "Room 747",
+      "type": "folder",
+      "children": [
+      {
+        "name": "Port 1",
+        "type": "url",
+        "url": "Master-Slave API and UI/static/index.html"
+      },
+      {
+        "name": "Port 2",
+        "type": "url",
+        "url": "Master-Slave API and UI/static/index.html"
+      }]
+    },
+    {
+      "name": "Room 764",
+      "type": "folder",
+      "children": [
+      {
+        "name": "Port 17",
+        "type": "url",
+        "url": "Master-Slave API and UI/static/index.html"
+      }]
+    }]
+  }]
+}
+
