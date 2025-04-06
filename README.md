@@ -1,18 +1,38 @@
-# S.A.D_SCRB-v1
+# <u>S.A.D-v1</u>
 ## **S**ecurity **A**udit **D**ashboard : v1
 A Basic Security audit dasboard for endpoint devices made in python with web interface
 
-# File Structure
+# Working:
+```mermaid
+flowchart TD
+ A[S.A.D v1] <-->B(Master Server)
+ B <--> |Fast API| C(Slave Server) 
+ C <--> |Subprocess| D[Audit Scripts]
+ D <--> E(Windows)
+ D <--> G(Linux)
 ```
-Master-Slave API and UI
-`-- static
+
+# File Structure (Windows):
+```
+Master File Structure:
+|-- static
       |-- arf.css
       |-- arf.js
       |-- d3.v3.min.js
       |-- index.html
- |-- audit.py
  |-- master.py
- |-- slave.py
-```
 
+Slave File Structure:
+      |-- slave.py
+      |-- audity.py
+```
+# Required Libraries:
+```
+pip install fastapi
+pip install uvicorn[standard]
+pip install wmi
+pip install json
+pip install fpdf
+pip install httpx
+```
 
