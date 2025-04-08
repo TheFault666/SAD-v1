@@ -32,7 +32,8 @@ pip install fastapi
 pip install uvicorn[standard]
 pip install wmi
 pip install json
-pip install fpdf
+pip install reportlab
+pop install fpdf
 pip install httpx
 ```
 
